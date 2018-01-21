@@ -1,0 +1,15 @@
+<div class="filter">
+  <form>
+    <div class='form-group'>
+      <label for='byTitle'>Titles:</label>
+      <input type='text' id='byTitle' class='form-control' (input)='filterItems("title", filterTitle.value)'
+             #filterTitle>
+    </div>
+    <div class='form-group'>
+      <label for='byDate'>Date:</label>
+      <input type='text' id='byDate' data-provide='datepicker' data-date-format='mm.dd.yy' class='form-control'
+             (input)='filterItems("dateTime", filterDate.value)' (focus)='filterItems("dateTime", filterDate.value)'
+             #filterDate>
+    </div>
+  </form>
+</div>

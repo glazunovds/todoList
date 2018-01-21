@@ -1,0 +1,22 @@
+<div class='items'>
+  <div class='card-deck'>
+    <div class='item card' *ngFor='let item of filteredItems'>
+      <div class='card-header'>
+        <div class='justify-content-between flex'>
+          <input type='text' class='title' value='{{ item.title }}' (blur)='onEditTitle(item, newTitle.value)'
+                 #newTitle>
+          <i class='fa fa-times remove' (click)='onRemoveItem(item.id); changePage(0, null, true);'
+             aria-hidden='true'></i>
+        </div>
+      </div>
+      <div class='card-body'>
+        <textarea class='description' rows='5' ref-textarea (blur)='onEditDescription(item, textarea.value)'>{{ item.description }}</textarea>
+      </div>
+      <div class='card-footer'>
+        <small class='text-muted'>
+          Added: {{ item.dateTime }}
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

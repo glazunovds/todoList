@@ -1,0 +1,36 @@
+
+.center {
+  text-align: center;
+  padding-top: 10px;
+}
+.card {
+  width: 22%;
+  max-width: 22%;
+  min-width: 22%;
+  margin-bottom: 35px;
+}
+.padding-top {
+  padding-top: 20px;
+}
+.remove {
+  cursor: pointer;
+}
+.remove:hover {
+  color: red;
+}
+.title {
+  display: inline-flex;
+}
+.description, .title {
+  border: 0;
+  background: transparent;
+}
+.flex {
+  display: flex;
+}
+textarea {
+  resize: none;
+  width: 100%;
+}
+
+
