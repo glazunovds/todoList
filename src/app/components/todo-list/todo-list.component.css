@@ -1,41 +1,47 @@
-.items {
-
-}
-.item {
-}
 .center {
   text-align: center;
   padding-top: 10px;
 }
+
 .card {
   width: 22%;
   max-width: 22%;
   min-width: 22%;
   margin-bottom: 35px;
 }
+
 .add-item {
   border: 1px solid #d2d2d2;
   border-radius: 10px;
   padding: 10px;
-  background: rgba(0,0,0,.03);
+  background: rgba(0, 0, 0, .03);
 }
+
 .filter {
-  background: rgba(0,0,0,.03);
+  background: rgba(0, 0, 0, .03);
 
 }
+
 .padding-top {
   padding-top: 20px;
 }
+
 .remove {
   cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 15px;
 }
+
 .remove:hover {
   color: red;
 }
+
 .title {
   display: inline-flex;
-
+  width: 95%;
 }
+
 .description, .title {
   border: 0;
   background: transparent;
@@ -44,17 +50,17 @@
 .flex {
   display: flex;
 }
+
 textarea {
   resize: none;
   width: 100%;
 }
-* {
-  /*outline: none;*/
-}
+
 .page-wrapper {
   display: inline-flex;
 
 }
+
 .page {
   margin-left: -1px;
   line-height: 1.25;
@@ -84,6 +90,23 @@ textarea {
   justify-content: center;
 }
 
+.card-deck {
+  justify-content: center;
+}
+
 .hidden {
   display: none;
 }
+
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 35px;
+    margin-top: 35px;
+  }
+}
+
+
+
+

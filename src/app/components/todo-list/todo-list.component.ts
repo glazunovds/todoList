@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ITodoItemState} from "../../redux/reducers/todoItemsReducer";
 import {Store} from "@ngrx/store";
-import * as Immutable from 'immutable';
 import _ from 'lodash';
 
 import {addItem, editItemTitle, removeItem, editItemDescription} from '../../redux/actions/todoItemsActions';
@@ -12,9 +11,9 @@ import {addItem, editItemTitle, removeItem, editItemDescription} from '../../red
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  title = 'app';
   items = [];
   filteredItems = [];
+  rightItems = [];
   pageItems = 8;
   currentPage = 1;
   totalPages = 1;
@@ -29,9 +28,8 @@ export class TodoListComponent implements OnInit {
   }
 
   recountPages() {
-    this.totalPages = Math.ceil(this.items.length/this.pageItems);
+    this.totalPages = Math.ceil(this.rightItems.length / this.pageItems);
     this.pagesArr = _.range(1, this.totalPages + 1);
-    // this.pagesArr = Array(this.totalPages).fill(0).map((x, i) => i + 1);
   }
 
   onAddItem(title, description) {
@@ -54,40 +52,42 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterItems('','');
+    this.filterItems('', '');
   }
 
-  changePage(sign, lastPage = null, remove = false) {
+  changePage(sign, lastPage = null, remove = false, title, dateTime) {
     this.recountPages();
     if (remove) {
-      this.currentPage = this.currentPage>this.totalPages? this.totalPages:this.currentPage;
+      this.currentPage = this.currentPage > this.totalPages ? this.totalPages : this.currentPage;
     }
     if (!lastPage) {
-      if (sign>0 && this.currentPage < this.totalPages) {
+      if (sign > 0 && this.currentPage < this.totalPages) {
         this.currentPage++;
-      } else if (sign<0 && this.currentPage > 1) {
+      } else if (sign < 0 && this.currentPage > 1) {
         this.currentPage--;
       }
     } else {
       this.currentPage = this.totalPages;
     }
-    this.filterItems("","",this.currentPage);
+    this.filterItems(title, dateTime, this.currentPage);
   }
 
-  filterItems(rowName, value, page = 1) {
+  filterItems(title, dateTime, page = 1) {
     let tempItems = [];
     page--;
-    if (value !== '') {
-      switch (rowName) {
-        case 'title':
-          tempItems = this.items.filter((el) => el.title.indexOf(value) !== -1);
-        case 'dateTime':
-          tempItems = this.items.filter((el) => el.dateTime.indexOf(value) !== -1)
-      }
+    if (title !== '' && dateTime !== '') {
+      tempItems = this.items.filter((el) => el.title.indexOf(title) != -1).filter((el) => el.dateTime.indexOf(dateTime) != -1);
     } else {
-      tempItems = this.items;
+      if (title !== '') {
+        tempItems = this.items.filter((el) => el.title.indexOf(title) != -1);
+      } else if (dateTime !== '') {
+        tempItems = this.items.filter((el) => el.dateTime.indexOf(dateTime) != -1);
+      } else {
+        tempItems = this.items;
+      }
     }
+    this.rightItems = tempItems;
     this.filteredItems = tempItems.slice(page * this.pageItems, (page + 1) * this.pageItems);
-    console.log(tempItems.slice(page * this.pageItems, (page + 1) * this.pageItems))
+    this.recountPages();
   }
 }

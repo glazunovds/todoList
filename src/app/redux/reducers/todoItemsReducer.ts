@@ -12,8 +12,8 @@ function generateData(count) {
   for (let i = 0; i < count; i++) {
     data[i] = {
       id: uuid(),
-      title: `title ${i+1}`,
-      description: `description ${i+1}`,
+      title: `title ${i + 1}`,
+      description: `description ${i + 1}`,
       dateTime: moment().add(Math.floor(Math.random() * 20) - 10, 'days').format('MM.DD.YY'),
     }
   }
