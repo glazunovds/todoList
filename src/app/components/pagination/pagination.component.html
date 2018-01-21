@@ -1,9 +1,0 @@
-<div class='pagination' [ngClass]='{hidden: totalPages == 0}'>
-  <div class='page-wrapper'>
-    <div class='page' (click)='changePage(-1)'><</div>
-    <div class='page' [ngClass]='{active:page == currentPage}' *ngFor='let page of pagesArr'
-         (click)='currentPage=page; filterItems("","",page)'>{{page}}
-    </div>
-    <div class='page' (click)='changePage(1)'>></div>
-  </div>
-</div>

@@ -1,4 +1,8 @@
+.items {
 
+}
+.item {
+}
 .center {
   text-align: center;
   padding-top: 10px;
@@ -8,6 +12,16 @@
   max-width: 22%;
   min-width: 22%;
   margin-bottom: 35px;
+}
+.add-item {
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(0,0,0,.03);
+}
+.filter {
+  background: rgba(0,0,0,.03);
+
 }
 .padding-top {
   padding-top: 20px;
@@ -20,11 +34,13 @@
 }
 .title {
   display: inline-flex;
+
 }
 .description, .title {
   border: 0;
   background: transparent;
 }
+
 .flex {
   display: flex;
 }
@@ -32,5 +48,42 @@ textarea {
   resize: none;
   width: 100%;
 }
+* {
+  /*outline: none;*/
+}
+.page-wrapper {
+  display: inline-flex;
 
+}
+.page {
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  padding: .5rem .75rem;
+  user-select: none;
+}
 
+.page:focus, .page:hover {
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.page.active {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
